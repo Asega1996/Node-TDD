@@ -71,13 +71,13 @@ Example: "//[---]\n1---2---3" => 6
 
 Allow multiple delimiters like this: 
 
-"//[*][%]\n1*2%3" => 6
+"//[-][%]\n1-2%3" => 6
 
 ### 11
 
 Make sure you can also handle multiple delimiters with length longer than one char:
 
-"//[**][%%]\n1**2%%3" => 6
+"//[--][%%]\n1--2%%3" => 6
 
  
 
