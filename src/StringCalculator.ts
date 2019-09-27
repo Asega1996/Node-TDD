@@ -6,14 +6,25 @@ export class StringCalculator{
     }
 
     private checkValues(param : string) : number{
-        let params = param.split(',');
+        let reg = /[\n,]/g
+        let params = param.split(reg);
 
-        return (params.length == 1)? this.stringToNumber(params[0]) :
-                                     this.stringToNumber(params[0]) + this.stringToNumber(params[1])
+        return this.sumNumbers(params)
+                                     
     }
 
     private stringToNumber(param : string) : number {
         return Number.parseInt(param);
     }
+
+    private sumNumbers(params: string[]) : number{
+        let result : number = 0;
+        params.forEach(param => {
+            result += this.stringToNumber(param);
+        });
+        return result;
+
+    }
+
 
 }
