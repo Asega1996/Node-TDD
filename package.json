@@ -1,14 +1,14 @@
 {
   "name": "tdd",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Before you start",
   "main": "index.js",
   "scripts": {
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alejandro Segovia Gallardo",
   "license": "ISC",
   "dependencies": {
     "ts-node": "^8.4.1",
@@ -20,5 +20,13 @@
     "chai": "^4.2.0",
     "mocha": "^6.2.0",
     "tslint": "^5.20.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asega1996/Node-TDD.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Asega1996/Node-TDD/issues"
+  },
+  "homepage": "https://github.com/Asega1996/Node-TDD#readme"
 }
