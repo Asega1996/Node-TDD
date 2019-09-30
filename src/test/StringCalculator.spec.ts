@@ -82,11 +82,19 @@ describe('StringCalculator',() => {
     it('checks step 9',() => {
         let result;
         result = sc.add("//[---]\n1---2---3");
-        assert(result == 6, 'add fail with largest delimiters');
+        assert(result == 6, 'add fail with custom delimiters');
     })
 
+    it('checks step 10',() => {
+        let result;
+        result = sc.add("//[-][%]\n1-2%3");
+        assert(result == 6, 'add fail with multiple + custom + large delimiters');
+    })
 
-
-
+    it('checks step 11',() => {
+        let result;
+        result = sc.add("//[--][%%]\n1--2%%3");
+        assert(result == 6, 'add fail with multiple + custom + large delimiters');
+    })
 
 })

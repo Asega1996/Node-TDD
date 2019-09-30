@@ -10,16 +10,22 @@ export class StringCalculator{
         
     }
 
-
     public add (param : string): number {
         this.incrementAdds();
         return (param == "")?  0 : this.checkValues(param); 
     }
 
     private checkValues(param : string) : number{
-        //let reg = /[//\n,]/g
-        let reg = /[;//\n]/g
+        let reg = /[\[\];//\n]/g
+        var matches = param.match(/\[(.*?)\]/g);
+        if(matches){
+            matches.forEach(del => {
+                let regEx = new RegExp(del,"g")
+                param = param.replace(regEx,',')
+            })
+        }
         param = param.replace(reg ,',')
+        param = param.replace(/,,,/g,',')
         let params = param.split(',');
         return this.sumNumbers(params)
                                      
