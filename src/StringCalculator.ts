@@ -1,14 +1,26 @@
 
+const StringEmpty = '';
+
 export class StringCalculator{
 
+    private numberAddsCalled;
+
+    constructor() {
+        this.numberAddsCalled = 0;
+        
+    }
+
+
     public add (param : string): number {
+        this.incrementAdds();
         return (param == "")?  0 : this.checkValues(param); 
     }
 
     private checkValues(param : string) : number{
-        let reg = /[\n,]/g
-        let params = param.split(reg);
-
+        //let reg = /[//\n,]/g
+        let reg = /[;//\n]/g
+        param = param.replace(reg ,',')
+        let params = param.split(',');
         return this.sumNumbers(params)
                                      
     }
@@ -19,12 +31,37 @@ export class StringCalculator{
 
     private sumNumbers(params: string[]) : number{
         let result : number = 0;
+        let negatives : number[] = [];
         params.forEach(param => {
-            result += this.stringToNumber(param);
+            if(!this.isDelimiter(param)){
+                let num = this.stringToNumber(param);
+                (num < 0)? negatives.push(num) : result += (num > 1000)? 0 : num
+            }
         });
+        if(negatives.length > 0) this.getExceptionMsg(negatives)
         return result;
 
     }
 
+    private getExceptionMsg(negatives: number[]) {
+        let str : string = 'negatives not allowed:';
+        negatives.forEach(negative =>{
+            str = str + " " + negative;
+        })
+        throw str;
+    }
+
+    private isDelimiter(param: string) {
+        return (param == StringEmpty )? true : false;
+    }
+
+
+    public getCalledCount(): number{
+        return this.numberAddsCalled;
+    }
+
+    private incrementAdds() {
+        this.numberAddsCalled +=1;
+    }
 
 }
